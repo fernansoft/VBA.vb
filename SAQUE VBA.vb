@@ -7,27 +7,15 @@ n10 = 0
 n05 = 0
 n02 = 0
 saque = InputBox("Isira o valor a ser sacado: ")
-    If (saque = 50) Then
-        saque = saque - 50
-        n50 = n50 + 1
-    End If
-    If (saque = 20) Then
-        saque = saque - 20
-        n20 = n20 + 1
-    End If
-    If (saque = 10) Then
-        saque = saque - 10
-        n10 = n10 + 1
-    End If
-    While (saque > 53)
+    While ((saque > 53) or (saque = 50))
         saque = saque - 50
         n50 = n50 + 1
     Wend
-    While (saque >= 23)
+    While ((saque >= 23) or (saque = 20))
         saque = saque - 20
         n20 = n20 + 1
     Wend
-    While (saque > 13)
+    While ((saque > 13) or (saque = 10))
         saque = saque - 10
         n10 = n10 + 1
     Wend
@@ -51,7 +39,7 @@ If ((saque = 6) Or (saque = 8)) Then
         Wend
         While (saque >= 2)
             saque = saque - 2
-            n05 = n02 + 1
+            n02 = n02 + 1
         Wend
 End If
 MsgBox (("Você irá sacar:") & vbCrLf & n50 & (" notas de R$50,00") & vbCrLf & n20 & (" notas de R$20,00") & vbCrLf & n10 & (" notas de R$10,00") & vbCrLf & n05 & (" notas de R$05,00") & vbCrLf & n02 & (" notas de R$02,00"))
