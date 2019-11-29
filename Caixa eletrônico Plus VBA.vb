@@ -4,6 +4,7 @@ Dim n20 As Integer
 Dim n10 As Integer
 Dim n05 As Integer
 Dim n02 As Integer
+Dim saldocaixa As Integer
 Dim codigobanco As Integer
 Dim valorsaque As Integer
 Dim opcmenu As Integer
@@ -44,6 +45,12 @@ Sub fcarregarnotas()
     ' vnotasnocaixa(4) = notas de R$05,00
     ' vnotasnocaixa(5) = notas de R$02,00
     MsgBox ("Pronto! Agora o caixa tem:" & vbCrLf & vnotasnocaixa(0) & " notas de R$100,00" & vbCrLf & vnotasnocaixa(1) & " notas de R$50,00" & vbCrLf & vnotasnocaixa(2) & " notas de R$20,00" & vbCrLf & vnotasnocaixa(3) & " notas de R$10,00" & vbCrLf & vnotasnocaixa(4) & " notas de R$05,00" & vbCrLf & vnotasnocaixa(5) & " notas de R$02,00")
+	saldocaixa = saldocaixa + vnotasnocaixa(0)*100
+	saldocaixa = saldocaixa + vnotasnocaixa(1)*50
+	saldocaixa = saldocaixa + vnotasnocaixa(2)*20
+	saldocaixa = saldocaixa + vnotasnocaixa(3)*10
+	saldocaixa = saldocaixa + vnotasnocaixa(4)*5
+	saldocaixa = saldocaixa + vnotasnocaixa(5)*2
     Call fmenu
 End Sub
 Sub fsaquedecrescente()
@@ -53,6 +60,9 @@ Sub fsaquedecrescente()
         Call fmenu
     End If
     valorsaque = InputBox("insira o valor a ser sacado: ")
+	if saque > saldocaixa Then
+		MsgBox("Você excedeu o limite do caixa!")
+		Call fmenu
     If vnotasnocaixa(0) >= 1 Then
         While valorsaque > 103 Or valorsaque = 100
             valorsaque = valorsaque - 100
